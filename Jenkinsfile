@@ -23,16 +23,16 @@ node
                   }
 	}
 
-        stage('Push Image') {
-        echo 'Pushing image to Docker Hub....'
-	echo 'docker_hub_sglogin is name of Docker credential...'
+    //    stage('Push Image') {
+    //    echo 'Pushing image to Docker Hub....'
+//	echo 'docker_hub_sglogin is name of Docker credential...'
 
-        docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_sglogin')
-	 {
-        app.push("${env.BUILD_NUMBER}")
-        app.push("latest")
-	 }	
+//        docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_sglogin')//
+//	 {
+//        app.push("${env.BUILD_NUMBER}")
+//        app.push("latest")
+//	 }	
 	/*echo ${env.BUILD_NUMBER}*/
 
-	}
+//	}
 }
