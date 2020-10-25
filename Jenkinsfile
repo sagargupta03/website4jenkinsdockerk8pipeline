@@ -1,5 +1,5 @@
 // Script //
- 
+ //reference from https://github.com/rchidana/NodeApp/blob/master/Jenkinsfile 
 node
 {
   // agent { label 'staging'}
@@ -14,7 +14,7 @@ node
 
 	stage('Build Image') {
 	echo 'This builds the actual image....'
-	app = docker.build("sagargupta03/website4maythird")
+	app = docker.build("sagargupta03/websiteapachepl")
 	}
 
         stage('Test Image') {
