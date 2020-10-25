@@ -25,9 +25,9 @@ node
 
         stage('Push Image') {
         echo 'Pushing image to Docker Hub....'
-	echo 'SG-docker-hub is name of Docker credential...'
+	echo 'docker_hub_sglogin is name of Docker credential...'
 
-        docker.withRegistry('https://registry.hub.docker.com', 'SG-docker-hub')
+        docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_sglogin')
 	 {
         app.push("${env.BUILD_NUMBER}")
         app.push("latest")
