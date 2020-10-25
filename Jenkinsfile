@@ -1,38 +1,37 @@
-// Script //
- //reference from https://github.com/rchidana/NodeApp/blob/master/Jenkinsfile 
-node
-{
-  // agent { label 'staging'}
-  // possible options agent any, none , label , my slave name is staging	
-  def app
-	
-        stage('Clone Repository') {
-
-	echo 'Cloning the repository to our workbook....'
-        checkout scm
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Running build automation'
+                }
         }
-
-	stage('Build Image') {
-	echo 'This builds the actual image....'
-	app = docker.build("sagargupta03/websiteapachepl")
-	}
-
-        stage('Test Image') {
-        app.inside{
-        echo 'Test passed....'
-                  }
-	}
-
-    //    stage('Push Image') {
-    //    echo 'Pushing image to Docker Hub....'
-//	echo 'docker_hub_sglogin is name of Docker credential...'
-
-//        docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_sglogin')//
-//	 {
-//        app.push("${env.BUILD_NUMBER}")
-//        app.push("latest")
-//	 }	
-	/*echo ${env.BUILD_NUMBER}*/
-
-//	}
-}
+        stage('Build Docker Image'){
+        //    when {
+        //        branch 'master'
+        //    }
+            steps {
+                script {
+                    app = docker.build("sagargupta03/websiteapache2")
+                    app.inside {
+                        sh 'echo $(curl localhost:8080)'
+                    }
+                }
+            }
+        }
+        stage('Pushing Docker Image'){
+        //    when {
+        //        branch 'master'
+        //    }
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_sglogin'){
+                        app.push("${env.BUILD_NUMBER}")
+                        app.push("latest")
+                    }
+                }
+            }
+        }
+    }
+    
+}    
