@@ -65,6 +65,6 @@ pipeline {
                 echo $dockerRun
                 
                }
-           
+       }
     }
 }    
