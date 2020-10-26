@@ -13,9 +13,9 @@ pipeline {
             steps {
                 script {
                     app = docker.build("sagargupta03/websiteapache2")
-                    app.inside {
-                        sh 'echo $(curl localhost:8080)'
-                    }
+         //           app.inside {
+         //               sh 'echo $(curl localhost:8080)'
+         //           }
                 }
             }
         }
