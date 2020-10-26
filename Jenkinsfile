@@ -66,6 +66,7 @@ pipeline {
         //      def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3:${env.BUILD_NUMBER}"
       //          def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3"
       //          echo $dockerRun
+                    //prod-server-config with dockerproject credential setting
                     sshagent(['prod-server-config']) {
                    //sh "ssh -o StrictHostKeyChecking=no ubuntu@54.162.75.27 sudo docker run --restart always --name my-webiste -p 80:80 -d sagargupta03/websiteapache4"
                         //dockerproject user created on prod server which is part of docker group
