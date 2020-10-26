@@ -66,7 +66,9 @@ pipeline {
         //      def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3:${env.BUILD_NUMBER}"
       //          def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3"
       //          echo $dockerRun
+                    sshagent(['prod-server-config']) {
                      sh "ssh -o StrictHostKeyChecking=no ubuntu@54.162.75.27 ocker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3"
+                    }
                 }
                }
        }
