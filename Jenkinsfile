@@ -61,11 +61,10 @@ pipeline {
                //  def dockerRun = 'docker run -d -p 8080:8080 --name my-app kammana/my-app:0.0.1'
                  def sshCmd = 'ssh -o StrictHostKeyChecking=no ubuntu@${env.prod_ip}'
                  echo $sshCmd
-              def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3:${env.BUILD_NUMBER}\"
+              def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3:${env.BUILD_NUMBER}"
                 echo $dockerRun
                 
                }
-       }
+           
     }
-    
 }    
