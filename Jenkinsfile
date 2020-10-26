@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_sglogin'){
-                      app.push("${env.BUILD_NUMBER}")   //build number not including to remove duplicacy in jenkins server images
+                   //   app.push("${env.BUILD_NUMBER}")   //build number not including to remove duplicacy in jenkins server images
                         app.push("latest")
                     }
                 }
@@ -63,7 +63,8 @@ pipeline {
            //      def sshCmd = 'ssh -o StrictHostKeyChecking=no ubuntu@${env.prod_ip}'
        //            def sshCmd = "ssh -o StrictHostKeyChecking=no ubuntu@${env.prod_ip}"
        //          echo $sshCmd
-              def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3:${env.BUILD_NUMBER}"
+        //      def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3:${env.BUILD_NUMBER}"
+                def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3"
                 echo $dockerRun
                 }
                }
