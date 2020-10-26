@@ -52,7 +52,7 @@ pipeline {
               //  withCredentials([usernamePassword(passwordVariable : 'love8win' ,usernameVariable : 'sagargupta03' ,credentialsId : "docker_hub_sglogin" ,)]) {
                     sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
                     script{
-                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$prod_ip \"docker pull sagargupta03/websiteapache3:${env.BUILD_NUMBER}\""
+                        sh "docker pull sagargupta03/websiteapache3:${env.BUILD_NUMBER}\""
                     }
                     
                     }
