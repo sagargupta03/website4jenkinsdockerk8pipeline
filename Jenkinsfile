@@ -58,8 +58,8 @@ pipeline {
                //     }
                 
                 echo 'Run container on production server prod_ip '
-                
-                
+               //  def dockerRun = 'docker run -d -p 8080:8080 --name my-app kammana/my-app:0.0.1'
+              def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3:${env.BUILD_NUMBER}\"
                }
        }
     }
