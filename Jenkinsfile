@@ -12,7 +12,7 @@ pipeline {
         //    }
             steps {
                 script {
-                    app = docker.build("sagargupta03/websiteapache3")
+                    app = docker.build("sagargupta03/websiteapache4")
          //           app.inside {
          //               sh 'echo $(curl localhost:8080)'
          //           }
@@ -67,7 +67,7 @@ pipeline {
       //          def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3"
       //          echo $dockerRun
                     sshagent(['prod-server-config']) {
-                     sh "ssh -o StrictHostKeyChecking=no ubuntu@54.162.75.27 docker run --restart always --name my-webiste -p 80:80 -d sagargupta03/websiteapache3"
+                     sh "ssh -o StrictHostKeyChecking=no ubuntu@54.162.75.27 sudo docker run --restart always --name my-webiste -p 80:80 -d sagargupta03/websiteapache4"
                     }
                 }
                }
