@@ -38,6 +38,7 @@ pipeline {
         //        branch 'master'
         //    }
             steps {
+                script{
                 echo 'Planning for production run'
                  milestone(1)
                  sh "echo ${env.prod_ip}"
@@ -63,7 +64,7 @@ pipeline {
                  echo $sshCmd
               def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3:${env.BUILD_NUMBER}"
                 echo $dockerRun
-                
+                }
                }
        }
     }
