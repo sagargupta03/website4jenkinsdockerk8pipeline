@@ -32,6 +32,15 @@ pipeline {
                 }
             }
         }
+        
+       stage('Deploy to Production'){
+            when {
+                branch 'master'
+            }
+            steps {
+                echo 'Planning for production run'
+               }
+       }
     }
     
 }    
