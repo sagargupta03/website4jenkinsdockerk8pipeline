@@ -67,7 +67,15 @@ pipeline {
       //          def dockerRun =  "docker run --restart always --name my-webiste -p 8080:8080 -d sagargupta03/websiteapache3"
       //          echo $dockerRun
                     sshagent(['prod-server-config']) {
-                     sh "ssh -o StrictHostKeyChecking=no ubuntu@54.162.75.27 sudo docker run --restart always --name my-webiste -p 80:80 -d sagargupta03/websiteapache4"
+                   //sh "ssh -o StrictHostKeyChecking=no ubuntu@54.162.75.27 sudo docker run --restart always --name my-webiste -p 80:80 -d sagargupta03/websiteapache4"
+                        //dockerproject user created on prod server which is part of docker group
+                        //info --sudo usermod -aG docker dockerproject 
+                        //info --sudo useradd dockerproject
+                        //info --sudo passwd dockerproject
+
+                     sh "ssh -o StrictHostKeyChecking=no dockerproject@54.162.75.27 sudo docker run --restart always --name my-webiste -p 80:80 -d sagargupta03/websiteapache4"
+                        
+                        
                     }
                 }
                }
