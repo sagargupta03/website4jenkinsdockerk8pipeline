@@ -48,7 +48,8 @@ pipeline {
                 //logic to run new image on peod ip set in global properties
                 
               //  withCredentials([usernamePassword(passwordVariable : 'DOCKER_PASSWORD' ,usernameVariable : 'DOCKER_USERNAME' ,credentialsId : "dockerhub-id" ,)]) {
-                withCredentials([usernamePassword(passwordVariable : 'love8win' ,usernameVariable : 'sagargupta03' ,credentialsId : "docker_hub_sglogin" ,)]) {
+                withCredentials([usernamePassword(passwordVariable : 'DOCKER_PASSWORD' ,usernameVariable : 'DOCKER_USERNAME' ,credentialsId : "docker_hub_sglogin" ,)]) {
+              //  withCredentials([usernamePassword(passwordVariable : 'love8win' ,usernameVariable : 'sagargupta03' ,credentialsId : "docker_hub_sglogin" ,)]) {
                     sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
                     }
                }
