@@ -40,6 +40,8 @@ pipeline {
             steps {
                 echo 'Planning for production run'
                  milestone(1)
+                 sh "echo ${env.prod_ip}"
+                 sh "ping -c 2 ${env.prod_ip}"  
                ///logic to pull image from docker
                 //logic to login to prod server
                 //logic to delete before images if any on production
