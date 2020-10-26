@@ -51,10 +51,10 @@ pipeline {
                 withCredentials([usernamePassword(passwordVariable : 'DOCKER_PASSWORD' ,usernameVariable : 'DOCKER_USERNAME' ,credentialsId : "docker_hub_sglogin" ,)]) {
               //  withCredentials([usernamePassword(passwordVariable : 'love8win' ,usernameVariable : 'sagargupta03' ,credentialsId : "docker_hub_sglogin" ,)]) {
                     sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
-                    script{
-                        sh "docker pull sagargupta03/websiteapache3:${env.BUILD_NUMBER}\""
-                    }
-                    
+           //         script{
+           //             sh "docker pull sagargupta03/websiteapache3:${env.BUILD_NUMBER}\""
+           //         }
+                    //logic to run new image on peod ip set in global properties
                     }
                }
        }
