@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_sglogin'){
-                    //    app.push("${env.BUILD_NUMBER}")   //build number not including to remove duplicacy in jenkins server images
+                      app.push("${env.BUILD_NUMBER}")   //build number not including to remove duplicacy in jenkins server images
                         app.push("latest")
                     }
                 }
@@ -51,6 +51,10 @@ pipeline {
                 withCredentials([usernamePassword(passwordVariable : 'DOCKER_PASSWORD' ,usernameVariable : 'DOCKER_USERNAME' ,credentialsId : "docker_hub_sglogin" ,)]) {
               //  withCredentials([usernamePassword(passwordVariable : 'love8win' ,usernameVariable : 'sagargupta03' ,credentialsId : "docker_hub_sglogin" ,)]) {
                     sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+                    script{
+                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$prod_ip \"docker pull sagargupta03/websiteapache3:${env.BUILD_NUMBER}\""
+                    }
+                    
                     }
                }
        }
