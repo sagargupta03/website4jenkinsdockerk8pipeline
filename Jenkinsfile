@@ -74,9 +74,9 @@ pipeline {
                         //info --sudo useradd dockerproject
                         //info --sudo passwd dockerproject
 
-                     sh "ssh -o StrictHostKeyChecking=no dockerproject@54.152.133.239 sudo docker run --restart always --name my-website-new -p 80:80 -d sagargupta03/websiteapache4"
+                   //  sh "ssh -o StrictHostKeyChecking=no dockerproject@54.152.133.239 sudo docker run --restart always --name my-website-new -p 80:80 -d sagargupta03/websiteapache4"
                         
-                   //  sh "ssh -o StrictHostKeyChecking=no jenkins@54.152.133.239 sudo docker run --restart always --name my-website-new -p 80:80 -d sagargupta03/websiteapache4"
+                     sh "ssh -o StrictHostKeyChecking=no jenkins@54.152.133.239 sudo docker run --restart always --name my-website-new -p 80:80 -d sagargupta03/websiteapache4"
                         
                         
                     }
