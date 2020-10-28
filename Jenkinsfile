@@ -47,7 +47,10 @@ pipeline {
                     //logic to delete before images if any on production - pending
                         
                 echo 'Run container on production server prod_ip '
-                    sshagent(['prod-server-config']) {
+                  //  sshagent(['prod-server-config']) {  //for jenkins slave
+                    //for k8 master ip as prod-ip
+                    sshagent(['prod-server-config-k8']) {
+                    
                    //sh "ssh -o StrictHostKeyChecking=no ubuntu@54.162.75.27 sudo docker run --restart always --name my-webiste -p 80:80 -d sagargupta03/websiteapache4"
                         //dockerproject user created on prod server which is part of docker group
                         //info --sudo usermod -aG docker dockerproject 
