@@ -12,7 +12,7 @@ pipeline {
         //    }
             steps {
                 script {
-                    app = docker.build("sagargupta03/websiteapache4")
+                    app = docker.build("sagargupta03/websiteapache1")
          //           app.inside {
          //               sh 'echo $(curl localhost:8080)'
          //           }
@@ -54,7 +54,7 @@ pipeline {
                         //info --sudo useradd dockerproject
                         //info --sudo passwd dockerproject
                    // sh "ssh -o StrictHostKeyChecking=no dockerproject@54.152.133.239 sudo docker run --restart always --name my-website-new2 -p 80:80 -d sagargupta03/websiteapache4"
-                     sh "ssh -o StrictHostKeyChecking=no jenkins@${env.prod_ip} sudo -S docker run --restart always --name my-website -p 80:80 -d sagargupta03/websiteapache4"
+                     sh "ssh -o StrictHostKeyChecking=no jenkins@${env.prod_ip} sudo -S docker run --restart always --name my-website -p 80:80 -d sagargupta03/websiteapache1"
                     }
                 }
                }
