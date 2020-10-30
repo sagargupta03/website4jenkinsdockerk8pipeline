@@ -38,8 +38,10 @@ pipeline {
                 script{
                 echo 'Planning for production run'
                  milestone(1)
-                 sh "echo ${env.prod_ip}"
-                 sh "ping -c 2 ${env.prod_ip}"  
+          //       sh "echo ${env.prod_ip}"
+          //       sh "ping -c 2 ${env.prod_ip}"  
+                 sh "echo ${env.KUBE_MASTER_IP}"
+                 sh "ping -c 2 ${env.KUBE_MASTER_IP}"  
                                    
                 echo 'Run container on production server prod_ip '
                  //  sshagent (credentials: ['prod-server-config-k8']) {
