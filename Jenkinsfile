@@ -46,7 +46,7 @@ pipeline {
                  //  sh "ssh -o StrictHostKeyChecking=no -l jenkins ${env.prod_ip} sudo docker run --restart always --name my-website-latest -p 8080:8080 -d sagargupta03/websiteapache1"
                  //   }
                      kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
+                    kubeconfigId: 'kubeconfig_cred_sg_ubuntu',
                     configs: 'website-simple.yaml',
                     enableConfigSubstitution: true
                 )
