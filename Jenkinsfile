@@ -51,7 +51,7 @@ pipeline {
              //       kubeconfigId: 'kubeconfig_cred_sg_ubuntu',
              //       configs: 'website-simple.yaml',
              //       enableConfigSubstitution: true
-                )
+            //    )
                     
                     
                 }
