@@ -44,7 +44,8 @@ pipeline {
                  sh "ping -c 2 ${env.KUBE_MASTER_IP}"  
                                    
                 echo 'Run container on production server KUBE_MASTER_IP <oldprod_ip> '
-                   sshagent (credentials: ['prod-server-config-k8']) {
+                   //sshagent (credentials: ['prod-server-config-k8']) {  --for k8 master 
+                       sshagent (credentials: ['prod-server-config-jslave']) {  //for jenkins slave
                    sh "ssh -o StrictHostKeyChecking=no -l jenkins ${env.KUBE_MASTER_IP} sudo docker run --restart always --name my-website-latest -p 8080:8080 -d sagargupta03/websiteapache1"
                     }
              //        kubernetesDeploy(
