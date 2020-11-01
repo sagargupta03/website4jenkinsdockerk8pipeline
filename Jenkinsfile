@@ -44,13 +44,13 @@ pipeline {
                  sh "ping -c 2 ${env.KUBE_MASTER_IP}"  
                                    
                 echo 'Run container on production server KUBE_MASTER_IP <oldprod_ip> '
-                 //  sshagent (credentials: ['prod-server-config-k8']) {
-                 //  sh "ssh -o StrictHostKeyChecking=no -l jenkins ${env.prod_ip} sudo docker run --restart always --name my-website-latest -p 8080:8080 -d sagargupta03/websiteapache1"
-                 //   }
-                     kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig_cred_sg_ubuntu',
-                    configs: 'website-simple.yaml',
-                    enableConfigSubstitution: true
+                   sshagent (credentials: ['prod-server-config-k8']) {
+                   sh "ssh -o StrictHostKeyChecking=no -l jenkins ${env.prod_ip} sudo docker run --restart always --name my-website-latest -p 8080:8080 -d sagargupta03/websiteapache1"
+                    }
+             //        kubernetesDeploy(
+             //       kubeconfigId: 'kubeconfig_cred_sg_ubuntu',
+             //       configs: 'website-simple.yaml',
+             //       enableConfigSubstitution: true
                 )
                     
                     
